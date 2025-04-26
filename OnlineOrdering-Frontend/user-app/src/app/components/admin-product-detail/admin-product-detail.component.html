@@ -1,0 +1,26 @@
+<h2>📦 商品詳情</h2>
+
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+
+<div *ngIf="product">
+  <p><strong>ID：</strong> {{ product.id }}</p>
+  <p><strong>名稱：</strong> {{ product.name }}</p>
+  <p><strong>描述：</strong> {{ product.description || '-' }}</p>
+  <p><strong>圖片：</strong></p>
+  <img [src]="product.imageUrl"
+     style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px; " />
+  <p><strong>建立時間：</strong> {{ product.createdAt | date:'short' }}</p>
+
+  <hr>
+  <h3>📍 目前供應商鋪</h3>
+  <ul>
+  <li *ngFor="let s of stores">
+    商鋪ID: {{ s.store.id }}｜
+    商鋪名稱: {{ s.store.name }}｜
+    商鋪地址: {{ s.store.location }}｜
+    庫存: {{ s.stock }}｜
+    單價: {{ s.unitPrice | currency: 'USD' }}
+  </li>
+</ul>
+
+</div>

@@ -1,0 +1,47 @@
+<h2>🏬 商鋪管理</h2>
+
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+
+<!-- 新增商店表單 -->
+<form (ngSubmit)="addStore()" #storeForm="ngForm">
+  <label>商店名稱:
+    <input type="text" [(ngModel)]="newStore.name" name="name" required />
+  </label>
+  <br />
+  <label>商店地址:
+    <input type="text" [(ngModel)]="newStore.location" name="location" required />
+  </label>
+  <br />
+  <button type="submit">➕ 新增商店</button>
+</form>
+
+<hr />
+
+<table *ngIf="stores.length > 0; else noData">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>名稱</th>
+      <th>地址</th>
+      <th>狀態</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let store of stores">
+      <td>{{ store.id }}</td>
+      <td>{{ store.name }}</td>
+      <td>{{ store.location }}</td>
+      <td>{{ store.isActive ? '啟用' : '已停用' }}</td>
+      <td>
+        <button (click)="deactivateStore(store.id)" [disabled]="!store.isActive">停用</button>
+        <button (click)="viewStoreDetails(store.id)">詳情</button>
+      </td>
+      
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noData>
+  <p>目前沒有任何商鋪。</p>
+</ng-template>

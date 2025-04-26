@@ -1,0 +1,155 @@
+/* You can add global styles to this file, and also import other style files */
+/* 🌐 Global Styling */
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f6f8fa;
+    color: #333;
+    padding: 2rem;
+    margin: 0;
+  }
+  
+  /* 📦 Forms */
+  form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    max-width: 500px;
+    margin: 1rem auto;
+  }
+  
+  form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  form input, form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  form button {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* ✅ Success & ❌ Error Messages */
+  p[style*="color: green"] {
+    color: #28a745 !important;
+    font-weight: bold;
+  }
+  
+  p[style*="color: red"] {
+    color: #dc3545 !important;
+    font-weight: bold;
+  }
+  
+  div[style*="color: orange"] {
+    color: #fd7e14 !important;
+    margin-top: 0.5rem;
+  }
+  
+  /* 🧾 Table Styles (orders) */
+  table {
+    width: 90%;
+    margin: 2rem auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  thead {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  tbody tr:hover {
+    background-color: #f1f3f5;
+  }
+  
+  /* 🎯 Buttons on profile page */
+  button {
+    margin: 0.5rem 0.5rem 0 0;
+  }
+  
+  /* 🧭 Navigation bar */
+  nav {
+    background-color: #343a40;
+    padding: 1rem;
+    text-align: right;
+  }
+  
+  nav button {
+    background: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border-radius: 6px;
+  }
+  
+  nav button:hover {
+    background-color: #c82333;
+  }
+
+  /* 🍽️ 菜單卡片樣式（多欄排列） */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  margin: 1rem 0;
+}
+
+.product-card {
+  width: 280px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+  

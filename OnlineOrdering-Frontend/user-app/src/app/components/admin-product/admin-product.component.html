@@ -1,0 +1,53 @@
+<h2>📦 商品管理</h2>
+
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+
+<!-- 🔼 新增商品表單 -->
+<form (ngSubmit)="addProduct()" #productForm="ngForm">
+  <label>商品名稱:
+    <input type="text" [(ngModel)]="newProduct.name" name="name" required />
+  </label>
+  <br />
+  <label>商品描述:
+    <textarea [(ngModel)]="newProduct.description" name="description"></textarea>
+  </label>
+  <br />
+  <label>圖片網址:
+    <input type="text" [(ngModel)]="newProduct.imageUrl" name="imageUrl" required />
+  </label>
+  <br />
+  <button type="submit">➕ 新增商品</button>
+</form>
+
+<hr />
+
+<table *ngIf="products.length > 0; else noData">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>圖片</th>
+      <th>名稱</th>
+      <th>描述</th>
+      <th>建立時間</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td><img [src]="product.imageUrl"
+        style="width: 120px; height: 120px; object-fit: cover; border-radius: 4px; " />
+      </td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description || '-' }}</td>
+      <td>{{ product.createdAt | date: 'short' }}</td>
+      <td>
+        <button (click)="viewProductDetails(product.id)">詳情</button>
+      </td>      
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noData>
+  <p>目前沒有任何商品。</p>
+</ng-template>

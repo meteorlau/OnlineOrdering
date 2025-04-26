@@ -1,0 +1,42 @@
+<h2>🛒 我的購物車</h2>
+
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+<div *ngIf="successMessage" style="color: green;">{{ successMessage }}</div>
+
+<table *ngIf="items.length > 0; else emptyCart">
+  <thead>
+    <tr>
+      <th>商品名稱</th>
+      <th>商鋪名稱</th>    <!-- ✅ 新增 -->
+      <th>商鋪地點</th>    <!-- ✅ 新增 -->
+      <th>單價</th>
+      <th>數量</th>
+      <th>小計</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.name }}</td>
+      <td>{{ item.storeName }}</td>    <!-- ✅ 顯示商鋪名稱 -->
+      <td>{{ item.storeLocation }}</td> <!-- ✅ 顯示商鋪地點 -->
+      <td>{{ item.price | currency: 'USD' }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.price * item.quantity | currency: 'USD' }}</td>
+      <td>
+        <button (click)="removeItem(item.itemId)">❌ 移除</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #emptyCart>
+  <p>目前購物車是空的。</p>
+</ng-template>
+
+<div *ngIf="items.length > 0" style="margin-top: 1rem;">
+  <p><strong>總計：</strong> {{ totalPrice | currency: 'USD' }}</p>
+  <button (click)="clearCart()">🗑️ 清空購物車</button>
+  <button (click)="placeOrder()" style="margin-left: 1rem;">🛒 提交訂單</button>
+</div>
+

@@ -1,0 +1,10 @@
+<h2>歡迎來到管理員主控台</h2>
+<p>您已成功登入！這是一個受保護的頁面。</p>
+
+<p *ngIf="username">目前登入帳號：<strong>{{ username }}</strong></p>
+<p *ngIf="role">用戶角色：<strong>{{ role }}</strong></p>
+
+<hr />
+
+<button (click)="changePassword()">🔐 修改密碼</button>
+  

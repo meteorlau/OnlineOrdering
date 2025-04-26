@@ -1,0 +1,62 @@
+<h2>🍜 菜單瀏覽</h2>
+
+<!-- 🔍 搜尋欄 -->
+<input
+  type="text"
+  [(ngModel)]="keyword"
+  (input)="filterProducts()"
+  placeholder="🔍 搜尋商品名稱..."
+  style="width: 100%; padding: 0.5rem; margin-bottom: 1rem;"
+/>
+
+<!-- ✅ 訊息顯示 -->
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+<div *ngIf="successMessage" style="color: green;">{{ successMessage }}</div>
+
+<!-- 🧩 商品網格容器 -->
+<div class="product-grid">
+  <div
+    *ngFor="let product of filteredProducts"
+    class="product-card"
+  >
+    <!-- 📷 商品圖片 -->
+    <img
+      [src]="product.imageUrl"
+      alt="商品圖片"
+      class="product-image"
+    />
+
+    <!-- 📄 商品資訊 -->
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.description || '暫無描述' }}</p>
+
+    <!-- 🏪 供應商選單 -->
+    <label>供應商：</label>
+    <select [(ngModel)]="selectedStore[product.id]">
+        <option [ngValue]="null">請選擇</option>
+        <option *ngFor="let s of product.availableStores" [ngValue]="s">
+          {{ s.store?.name || '未命名商鋪' }}（{{ s.store?.location || '無地址資料' }}）
+        </option>
+      </select>
+
+    <!-- 📦 詳細 -->
+    <div *ngIf="selectedStore[product.id]">
+      <p>庫存：{{ selectedStore[product.id].stock }}</p>
+      <p>單價：{{ selectedStore[product.id].unitPrice | currency: 'USD' }}</p>
+
+      <label>數量：</label>
+      <input
+        type="number"
+        [(ngModel)]="quantityMap[product.id]"
+        [min]="1"
+        [max]="selectedStore[product.id].stock"
+      />
+
+      <br />
+      <button (click)="addToCart(product)">🛒 加入購物車</button>
+    </div>
+  </div>
+</div>
+
+
+

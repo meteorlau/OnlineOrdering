@@ -1,0 +1,32 @@
+<h2>📝 註冊</h2>
+
+<form (ngSubmit)="register()">
+  <label>用戶名:</label>
+  <input type="text" [(ngModel)]="username" name="username" required /><br />
+
+  <label>密碼:</label>
+  <input
+    type="password"
+    [(ngModel)]="password"
+    name="password"
+    required
+    minlength="6"
+  /><br />
+
+  <!-- 🔶 即時提示密碼長度不足 -->
+  <div *ngIf="password.length > 0 && password.length < 6" style="color: orange;">
+    密碼需至少6位字元
+  </div>
+
+  <label>角色:</label>
+  <select [(ngModel)]="role" name="role">
+    <option value="USER">USER</option>
+    <option value="ADMIN">ADMIN</option>
+  </select><br />
+
+  <button type="submit">註冊</button>
+
+  <p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+</form>
+

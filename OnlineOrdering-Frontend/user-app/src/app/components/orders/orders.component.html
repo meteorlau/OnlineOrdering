@@ -1,0 +1,32 @@
+<h2>📄 訂單列表</h2>
+
+<table *ngIf="orders.length > 0; else noOrders">
+  <thead>
+    <tr>
+      <th>訂單號</th>
+      <th>使用者</th>
+      <th>下單時間</th>
+      <th>總金額</th>
+      <th>狀態</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.id }}</td>
+      <td>{{ order.username }}</td>
+      <td>{{ order.createdAt | date: 'short' }}</td>
+      <td>{{ order.totalPrice | currency: 'USD' }}</td>
+      <td>{{ order.status }}</td>
+      <td>
+        <button (click)="viewOrderDetails(order.id)">查看詳情</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noOrders>
+  <p>目前沒有任何訂單。</p>
+</ng-template>
+
+

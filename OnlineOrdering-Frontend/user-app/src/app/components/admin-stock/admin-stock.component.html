@@ -1,0 +1,28 @@
+<h2>📦 庫存與價格管理</h2>
+
+<form (ngSubmit)="updateStock()">
+  <label>商鋪 ID：
+    <input type="number" [(ngModel)]="stockDTO.storeId" name="storeId" required min="0">
+  </label>
+  <br>
+
+  <label>商品 ID：
+    <input type="number" [(ngModel)]="stockDTO.productId" name="productId" required min="0">
+  </label>
+  <br>
+
+  <label>庫存數量：
+    <input type="number" [(ngModel)]="stockDTO.stock" name="stock" required min="0">
+  </label>
+  <br>
+
+  <label>單價：
+    <input type="number" step="0.01" [(ngModel)]="stockDTO.unitPrice" name="unitPrice" required min="0">
+  </label>
+  <br>
+
+  <button type="submit">更新庫存與價格</button>
+</form>
+
+<p *ngIf="successMessage" style="color: green;">{{ successMessage }}</p>
+<p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>

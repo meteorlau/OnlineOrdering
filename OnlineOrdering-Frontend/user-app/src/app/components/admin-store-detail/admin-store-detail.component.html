@@ -1,0 +1,21 @@
+<h2>🏬 商鋪詳情</h2>
+
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+
+<div *ngIf="store">
+  <p><strong>ID：</strong> {{ store.id }}</p>
+  <p><strong>名稱：</strong> {{ store.name }}</p>
+  <p><strong>地址：</strong> {{ store.location }}</p>
+  <p><strong>啟用狀態：</strong> {{ store.isActive ? '啟用中' : '已停用' }}</p>
+
+  <hr>
+  <h3>📦 商鋪商品清單</h3>
+  <ul>
+    <li *ngFor="let p of products">
+        商品ID: {{ p.product.id }}｜
+        商品名稱: {{ p.product.name }}｜
+        庫存: {{ p.stock }}｜
+        單價: {{ p.unitPrice | currency: 'USD' }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,26 @@
+<nav *ngIf="isLoggedIn()">
+  <ul>
+    <!-- 顯示使用者端功能 -->
+    <li *ngIf="role === 'USER'"><a routerLink="/profile">🏠 使用者首頁</a></li>
+    <li *ngIf="role === 'USER'"><a routerLink="/orders">📄 我的訂單</a></li>
+    <li *ngIf="role === 'USER'"><a routerLink="/menu">🍜 菜單瀏覽</a></li>
+    <li *ngIf="role === 'USER'"><a routerLink="/cart">🛒 購物車</a></li>
+    <!-- 已刪除購物車功能 -->
+
+    <!-- 顯示管理員端功能 -->
+    <li *ngIf="role === 'ADMIN'"><a routerLink="/admin/profile">🛠️ 管理員主控台</a></li>
+    <li *ngIf="role === 'ADMIN'"><a routerLink="/admin/stores">🏬 商鋪管理</a></li>
+    <li *ngIf="role === 'ADMIN'"><a routerLink="/admin/products">🛍️ 商品管理</a></li>
+    <li *ngIf="role === 'ADMIN'"><a routerLink="/admin/stock">📦 庫存管理</a></li>
+    <li *ngIf="role === 'ADMIN'"><a routerLink="/admin/orders">🧾 訂單總覽</a></li>
+
+    <!-- 通用功能 -->
+    <li class="username">👤 {{ username }}</li>
+    <li class="role" *ngIf="role">🎭 {{ role }}</li>
+    <li><button (click)="logout()">🚪 登出</button></li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+  
+  
